@@ -4,6 +4,13 @@
   <artifactId>mybooksapp</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <name>KMAT Books App</name>
+  
+  <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+  
   <dependencies>
 <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
 	<dependency>
@@ -12,4 +19,49 @@
 	    <version>3.5.3</version>
 	</dependency>
   </dependencies>
+  
+  
+	<build>
+	    <plugins>
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-compiler-plugin</artifactId>
+	            <version>3.8.1</version>
+	            <configuration>
+	                <source>${maven.compiler.source}</source>
+	                <target>${maven.compiler.target}</target>
+	            </configuration>
+	        </plugin>
+	
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-jar-plugin</artifactId>
+	            <version>3.2.0</version>
+	            <configuration>
+	                <archive>
+	                    <manifest>
+	                        <addClasspath>true</addClasspath>
+	                        <mainClass>mybooksapp.BooksApplication</mainClass>
+	                    </manifest>
+	                </archive>
+	            </configuration>
+	        </plugin>
+	    
+	    
+	    		<plugin>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-maven-plugin</artifactId>
+	            <version>3.2.0</version> 
+	            <executions>
+	                <execution>
+	                    <goals>
+	                        <goal>repackage</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+        		</plugin>
+	    
+	    </plugins>
+	</build>
+
 </project>
